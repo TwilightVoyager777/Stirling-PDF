@@ -1,12 +1,13 @@
 package stirling.software.common.util.propertyeditor;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -154,7 +155,7 @@ class StringToArrayListPropertyEditorTest {
         assertThrows(IllegalArgumentException.class, () -> editor.setAsText(json));
     }
 
-    //added by Jason Wang
+    // added by Jason Wang
     @Test
     void testSetAsText_WhitespaceOnlyString() {
         // Arrange
