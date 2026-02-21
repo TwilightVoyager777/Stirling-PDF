@@ -25,6 +25,7 @@ jobs:
     timeout-minutes: 30
     env:
       DISABLE_ADDITIONAL_FEATURES: "false"
+
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
@@ -48,8 +49,15 @@ jobs:
       - name: Run core JUnit tests (GlobalExceptionHandler)
         run: ./gradlew :stirling-pdf:test --tests "stirling.software.SPDF.exception.GlobalExceptionHandlerTest" --no-daemon
 
+      - name: Run core JUnit tests (FileMonitor)
+        run: ./gradlew :stirling-pdf:test --tests "stirling.software.common.util.FileMonitorTest" --no-daemon
+
+      - name: Run core JUnit tests (StringToArrayListPropertyEditor)
+        run: ./gradlew :stirling-pdf:test --tests "stirling.software.common.util.StringToArrayListPropertyEditorTest" --no-daemon
+
       - name: Run proprietary JUnit tests (SecretMasker)
         run: ./gradlew :proprietary:test --tests "stirling.software.proprietary.util.SecretMaskerTest" --no-daemon
+
       - name: Upload test artifacts
         if: always()
         uses: actions/upload-artifact@v4
